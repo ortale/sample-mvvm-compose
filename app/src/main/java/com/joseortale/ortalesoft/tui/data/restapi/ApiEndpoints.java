@@ -1,6 +1,6 @@
 package com.joseortale.ortalesoft.tui.data.restapi;
 
-import com.joseortale.ortalesoft.tui.model.CodeChallenge;
+import com.joseortale.ortalesoft.tui.model.CodeChallengeResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -8,5 +8,5 @@ import retrofit2.http.Path;
 
 public interface ApiEndpoints {
     @GET("users/{user}/code-challenges/authored")
-    Call<CodeChallenge> getAuthoredCodeChallenge(@Path("user") Integer userId);
+    Call<CodeChallengeResponse> getAuthoredCodeChallenge(@Path("user") String user);
 }

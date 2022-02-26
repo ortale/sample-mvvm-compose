@@ -39,7 +39,7 @@ public class CodeChallengesRepository {
         return instance;
     }
 
-    public MutableLiveData<List<CodeChallenge>> getCodeChallenge() {
+    public MutableLiveData<List<CodeChallenge>> getCodeChallenges() {
         apiEndpoints.getAuthoredCodeChallenge(USER_TEST).enqueue(new Callback<CodeChallengeResponse>() {
             @Override
             public void onResponse(Call<CodeChallengeResponse> call, Response<CodeChallengeResponse> response) {

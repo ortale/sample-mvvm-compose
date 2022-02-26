@@ -20,8 +20,6 @@ public class CodeChallengesRepository {
 
     private static CodeChallengesRepository instance;
 
-    private Context context;
-
     private final ApiEndpoints apiEndpoints;
     private List<CodeChallenge> codeChallenges;
 
@@ -29,15 +27,13 @@ public class CodeChallengesRepository {
 
     private MutableLiveData<List<CodeChallenge>> codeChallengesData;
 
-    private CodeChallengesRepository(Context context) {
+    private CodeChallengesRepository() {
         apiEndpoints = RetrofitClient.getClient();
-
-        this.context = context;
     }
 
-    public static CodeChallengesRepository getInstance(Context context) {
+    public static CodeChallengesRepository getInstance() {
         if (instance == null) {
-            instance = new CodeChallengesRepository(context);
+            instance = new CodeChallengesRepository();
         }
 
         return instance;

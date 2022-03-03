@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/compose-model-1645887781931.xml" value="0.23310810810810811" />
+        <entry key="../../../../../../layout/compose-model-1646337324375.xml" value="0.23310810810810811" />
+        <entry key="../../../../../../layout/compose-model-1646339624621.xml" value="0.11444256756756757" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12291666666666666" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1335" />
       </map>
     </option>
   </component>

@@ -1,8 +1,9 @@
 package com.joseortale.ortalesoft.tui.data.repository;
 
-import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.util.Log;
+
+import androidx.lifecycle.MutableLiveData;
 
 import com.joseortale.ortalesoft.tui.data.restapi.ApiEndpoints;
 import com.joseortale.ortalesoft.tui.data.restapi.RetrofitClient;
@@ -40,6 +41,7 @@ public class CodeChallengesRepository {
     }
 
     public MutableLiveData<List<CodeChallenge>> getCodeChallenges() {
+        codeChallengesData = new MutableLiveData<>();
         apiEndpoints.getAuthoredCodeChallenge(USER_TEST).enqueue(new Callback<CodeChallengeResponse>() {
             @Override
             public void onResponse(Call<CodeChallengeResponse> call, Response<CodeChallengeResponse> response) {

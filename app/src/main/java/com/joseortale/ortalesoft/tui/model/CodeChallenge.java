@@ -2,9 +2,10 @@ package com.joseortale.ortalesoft.tui.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CodeChallenge {
+public class CodeChallenge implements Serializable {
     @SerializedName("id")
     private String id;
 

@@ -1,6 +1,5 @@
 package com.joseortale.ortalesoft.tui.view.fragments
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -22,19 +22,21 @@ import androidx.fragment.app.Fragment
 import com.joseortale.ortalesoft.tui.viewModel.CodeChallengesViewModel
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.joseortale.ortalesoft.tui.model.CodeChallenge
+import com.joseortale.ortalesoft.tui.view.activities.MainActivity
 import kotlinx.coroutines.DelicateCoroutinesApi
 
 class CodeChallengesFragment : Fragment() {
-    private var codeChallengesViewModel: CodeChallengesViewModel? = null
-
-    private var codeChallengeStateList by mutableStateOf(mutableStateListOf<CodeChallenge>())
     private val TAG = "CodeChallengeFragment"
+
+    private var codeChallengesViewModel: CodeChallengesViewModel? = null
+    private var codeChallengeStateList by mutableStateOf(mutableStateListOf<CodeChallenge>())
 
     @DelicateCoroutinesApi
     @ExperimentalFoundationApi
@@ -57,11 +59,12 @@ class CodeChallengesFragment : Fragment() {
     @Composable
     fun AppLayout() {
         var selectedItem by remember{mutableStateOf(CodeChallenge())}
-
+        val context = LocalContext.current as MainActivity
         LazyColumn(
                 modifier = Modifier
                         .fillMaxSize(),
                 content = {
+
                     items(codeChallengeStateList) {
                         Text(it.name,
                                 color = Color.White,
@@ -79,7 +82,8 @@ class CodeChallengesFragment : Fragment() {
                                             onClick = {
                                                 if (selectedItem != it) {
                                                     selectedItem = it
-                                                    Log.v(TAG, "selectedItem = $selectedItem.name")
+
+                                                    context.setFragment(CodeChallengeDetailsFragment.newInstance(selectedItem))
                                                 } else {
                                                     selectedItem = CodeChallenge()
                                                 }

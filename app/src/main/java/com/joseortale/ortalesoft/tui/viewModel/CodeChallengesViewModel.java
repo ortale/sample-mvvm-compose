@@ -1,5 +1,7 @@
 package com.joseortale.ortalesoft.tui.viewModel;
 
+import android.content.Context;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -13,8 +15,8 @@ public class CodeChallengesViewModel extends ViewModel {
     private MutableLiveData<List<CodeChallenge>> codeChallengesLiveData;
     private CodeChallengesRepository repository;
 
-    public MutableLiveData<List<CodeChallenge>> getAllCodeChallenges() {
-        repository = CodeChallengesRepository.getInstance();
+    public MutableLiveData<List<CodeChallenge>> getAllCodeChallenges(Context context) {
+        repository = CodeChallengesRepository.getInstance(context);
         codeChallengesLiveData = repository.getCodeChallenges();
 
         return codeChallengesLiveData != null ? codeChallengesLiveData : new MutableLiveData<>();

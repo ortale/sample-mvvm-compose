@@ -1,12 +1,22 @@
 package com.joseortale.ortalesoft.tui.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
 public class CodeChallenge implements Serializable {
     @SerializedName("id")
+    @Expose
+    @NotNull
+    @PrimaryKey
     private String id;
 
     @SerializedName("name")
@@ -20,12 +30,6 @@ public class CodeChallenge implements Serializable {
 
     @SerializedName("rankName")
     private String rankName;
-
-    @SerializedName("tags")
-    private List<String> tags;
-
-    @SerializedName("languages")
-    private List<String> languages;
 
     public String getId() {
         return id;
@@ -65,22 +69,6 @@ public class CodeChallenge implements Serializable {
 
     public void setRankName(String rankName) {
         this.rankName = rankName;
-    }
-
-    public List<String> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<String> tags) {
-        this.tags = tags;
-    }
-
-    public List<String> getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(List<String> languages) {
-        this.languages = languages;
     }
 
     @Override

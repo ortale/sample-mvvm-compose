@@ -97,7 +97,7 @@ class CodeChallengesFragment : Fragment() {
 
     private fun loadCodeChallenges() {
         codeChallengesViewModel = ViewModelProvider(this).get(CodeChallengesViewModel::class.java)
-        val codeChallengesVariable = codeChallengesViewModel!!.allCodeChallenges
+        val codeChallengesVariable = codeChallengesViewModel!!.getAllCodeChallenges(context)
         codeChallengesVariable.observe(viewLifecycleOwner) { codeChallenges: List<CodeChallenge> ->
             run {
                 codeChallengeStateList = codeChallenges.toMutableStateList()
